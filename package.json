@@ -5,7 +5,11 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server"
+    "dev": "nodemon server",
+    "start": "node server"
+  },
+  "engines": {
+    "node": "10.16.0"
   },
   "author": "",
   "license": "ISC",
