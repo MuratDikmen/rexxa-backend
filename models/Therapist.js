@@ -25,6 +25,9 @@ const TherapistSchema = mongoose.Schema({
   bio: {
     type: String,
   },
+  liked_by: {
+    type: Array,
+  },
 });
 
 module.exports = mongoose.model("Therapist", TherapistSchema);

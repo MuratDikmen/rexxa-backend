@@ -17,6 +17,9 @@ router.get("/", auth, async (req, res) => {
   if (req.user.userType === "therapist") {
     try {
       const therapist = await Therapist.findById(req.user.id).select("-password");
+      console.log(therapist);
+      therapist.likedByProfiles = await User.find({ _id: { $in: therapist.liked_by } }).select("-password");
+      console.log(therapist);
       res.json(therapist);
     } catch (error) {
       console.error(error.message);

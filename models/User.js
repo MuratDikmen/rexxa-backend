@@ -25,6 +25,12 @@ const UserSchema = mongoose.Schema({
   bio: {
     type: String,
   },
+  liked: {
+    type: Array,
+  },
+  disliked: {
+    type: Array,
+  },
 });
 
 module.exports = mongoose.model("User", UserSchema);
