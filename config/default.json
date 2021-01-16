@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://admin:zzD3ZeHoMfEGCAPj@cluster0.pzx3y.mongodb.net/tinder-for-therapists?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://admin:zzD3ZeHoMfEGCAPj@cluster0.pzx3y.mongodb.net/tinder-for-therapists?retryWrites=true&w=majority",
+  "jwtSecret": "123123"
 }

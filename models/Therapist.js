@@ -4,6 +4,12 @@ const TherapistSchema = mongoose.Schema({
   name: {
     type: String,
   },
+  email: {
+    type: String,
+  },
+  password: {
+    type: String,
+  },
   pictureURL: {
     type: Object,
   },

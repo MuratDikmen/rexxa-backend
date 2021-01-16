@@ -10,17 +10,13 @@ connectDB();
 // Initialize middleware
 app.use(express.json());
 
+// Routes
+app.use("/api/users", require("./routes/users"));
+app.use("/api/therapists", require("./routes/therapists"));
+app.use("/api/auth", require("./routes/auth"));
+
 app.get("/", async (req, res) => {
   res.send("Back end is working!!");
-  try {
-    const user = new User({
-      name: "Murat",
-      expertise: "Child Development",
-    });
-    await user.save();
-  } catch (error) {
-    console.error(error.message);
-  }
 });
 
 const PORT = process.env.PORT || 5000;
