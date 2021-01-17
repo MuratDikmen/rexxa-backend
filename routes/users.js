@@ -7,7 +7,6 @@ const auth = require("../middleware/auth");
 const { check, validationResult } = require("express-validator");
 
 const User = require("../models/User");
-const { update } = require("../models/User");
 
 // @route   POST api/users
 // @desc    Register a user
@@ -33,7 +32,7 @@ router.post(
         return res.status(400).json({ msg: "User already exists." });
       }
 
-      user = new User({ email, password, user_type: "user", first_time_user: true });
+      user = new User({ email, password, user_type: "user", first_time_user: true, seen: [] });
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(user.password, salt);
 

@@ -55,6 +55,9 @@ const UserSchema = mongoose.Schema({
   preferences: {
     type: Array,
   },
+  seen: {
+    type: Array,
+  },
 });
 
 module.exports = mongoose.model("User", UserSchema);

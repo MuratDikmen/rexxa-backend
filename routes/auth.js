@@ -24,13 +24,12 @@ router.get("/", auth, async (req, res) => {
       res.status(500).send("Server Error");
     }
   } else {
-    console.log("user login requested");
     try {
       const user = await User.findById(req.user.id).select("-password");
       user.liked_profiles = await Therapist.find({ _id: { $in: user.liked } }).select("-password");
       user.disliked_profiles = await Therapist.find({ _id: { $in: user.disliked } }).select("-password");
       user.save();
-      console.log(user);
+
       res.json(user);
     } catch (error) {
       console.error(error.message);

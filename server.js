@@ -16,6 +16,7 @@ app.use(express.json());
 app.use("/api/users", require("./routes/users"));
 app.use("/api/therapists", require("./routes/therapists"));
 app.use("/api/auth", require("./routes/auth"));
+app.use("/api/recommend", require("./routes/recommend"));
 
 app.get("/", async (req, res) => {
   res.send("Back end is working!!");
