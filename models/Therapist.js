@@ -10,6 +10,9 @@ const TherapistSchema = mongoose.Schema({
   password: {
     type: String,
   },
+  user_type: {
+    type: "String",
+  },
   pictureURL: {
     type: Object,
   },
@@ -27,6 +30,12 @@ const TherapistSchema = mongoose.Schema({
   },
   liked_by: {
     type: Array,
+  },
+  liked_by_profiles: {
+    type: Array,
+  },
+  first_time_user: {
+    type: Boolean,
   },
 });
 

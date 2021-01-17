@@ -1,7 +1,16 @@
 const mongoose = require("mongoose");
 
 const UserSchema = mongoose.Schema({
-  name: {
+  firstname: {
+    type: String,
+  },
+  lastname: {
+    type: String,
+  },
+  age: {
+    type: String,
+  },
+  gender: {
     type: String,
   },
   email: {
@@ -9,6 +18,9 @@ const UserSchema = mongoose.Schema({
   },
   password: {
     type: String,
+  },
+  user_type: {
+    type: "String",
   },
   pictureURL: {
     type: Object,
@@ -29,6 +41,18 @@ const UserSchema = mongoose.Schema({
     type: Array,
   },
   disliked: {
+    type: Array,
+  },
+  liked_profiles: {
+    type: Array,
+  },
+  disliked_profiles: {
+    type: Array,
+  },
+  first_time_user: {
+    type: Boolean,
+  },
+  preferences: {
     type: Array,
   },
 });

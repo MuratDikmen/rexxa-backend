@@ -13,21 +13,24 @@ const Therapist = require("../models/Therapist");
 // @desc    Get logged in user
 // @access  Private
 router.get("/", auth, async (req, res) => {
-  console.log("req");
   if (req.user.userType === "therapist") {
     try {
       const therapist = await Therapist.findById(req.user.id).select("-password");
-      console.log(therapist);
-      therapist.likedByProfiles = await User.find({ _id: { $in: therapist.liked_by } }).select("-password");
-      console.log(therapist);
+      therapist.liked_by_profiles = await User.find({ _id: { $in: therapist.liked_by } }).select("-password");
+      therapist.save();
       res.json(therapist);
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Server Error");
     }
   } else {
+    console.log("user login requested");
     try {
       const user = await User.findById(req.user.id).select("-password");
+      user.liked_profiles = await Therapist.find({ _id: { $in: user.liked } }).select("-password");
+      user.disliked_profiles = await Therapist.find({ _id: { $in: user.disliked } }).select("-password");
+      user.save();
+      console.log(user);
       res.json(user);
     } catch (error) {
       console.error(error.message);
@@ -43,8 +46,6 @@ router.post(
   "/therapist",
   [check("email", "Please include a vaild email").isEmail(), check("password", "Password is required").exists()],
   async (req, res) => {
-    console.log("login");
-    console.log(req.body);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
